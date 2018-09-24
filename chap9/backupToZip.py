@@ -11,7 +11,7 @@ def backupToZip(folder):
 	number = 1
 	while True:
 		zipFilename = os.path.basename(folder) + '_' + str(number) + '.zip'
-		if not os.path.exists(zipFilename)
+		if not os.path.exists(zipFilename):
 			break
 		number = number + 1
 
@@ -25,3 +25,10 @@ def backupToZip(folder):
 		# Add the current folder to the ZIP file.
 		backupZip.write(foldername)
 		# Add all the files in this folder to the Zip file.
+		backupZip.write(os.path.join(foldername, filename))
+
+	backupZip.close()
+
+	print('done.')
+
+backupToZip(".")
